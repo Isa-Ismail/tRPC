@@ -3,8 +3,6 @@ import Button from './Button'
 import ProfileImage from './ProfileImage'
 import { useSession } from 'next-auth/react'
 
-interface Props {}
-
 const NewTweetForm = () => {
 
     const session = useSession()

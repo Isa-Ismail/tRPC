@@ -2,8 +2,6 @@ import { signIn, signOut, useSession } from 'next-auth/react'
 import Link from 'next/link'
 import React from 'react'
 
-interface Props {}
-
 const SideNav = () => {
     const session = useSession()
     const user = session.data?.user
