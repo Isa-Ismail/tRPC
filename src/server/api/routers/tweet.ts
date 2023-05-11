@@ -6,14 +6,12 @@ import {
   protectedProcedure,
 } from "~/server/api/trpc";
 
-export const exampleRouter = createTRPCRouter({
-  // hello: publicProcedure
-  //   .input(z.object({ text: z.string() }))
-  //   .query(({ input }) => {
-  //     return {
-  //       greeting: `Hello ${input.text}`,
-  //     };
-  //   }),
+export const tweetRouter = createTRPCRouter({
+  create: protectedProcedure
+    .input(z.object({ content: z.string() }))
+    .mutation(async({ input: {content}, ctx }) => { 
+      return await ctx.prisma.tweet.create ({ data: { content, userId: ctx.session.user.id }})
+     }),
 
   // getAll: publicProcedure.query(({ ctx }) => {
   //   return ctx.prisma.example.findMany();
